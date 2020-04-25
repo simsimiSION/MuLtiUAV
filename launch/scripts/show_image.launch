@@ -1,0 +1,7 @@
+<launch>
+
+    <include file="$(find MultiUAV)/launch/px4/camera_px4.launch"/>
+
+    <node pkg="MultiUAV"  type="show_image" name="show_image" output="screen"/>
+
+</launch>

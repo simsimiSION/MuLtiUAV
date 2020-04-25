@@ -1,0 +1,22 @@
+<launch>
+
+    <arg name="world_path" default="$(find simulation)/worlds/empty.world" />
+    <arg name="gui" default="true"/>
+
+    <include file="$(find MultiUAV)/launch/car/car_spawn.launch">
+        <arg name="x" value="1"/>
+        <arg name="y" value="0"/>
+        <arg name="z" value="0"/>
+    </include>
+    
+    <include file="$(find MultiUAV)/launch/px4/camera_uav_spawn.launch"/>
+
+    <!-- Launch Gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="world_name" value="$(arg world_path)" />
+    </include>
+
+
+
+</launch>

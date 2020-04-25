@@ -1,0 +1,25 @@
+<launch>
+
+    <arg name="world" default="$(find MultiUAV)/worlds/empty.world"/>
+    <arg name="gui" default="true"/>
+    <arg name="debug" default="false"/>
+    <arg name="verbose" default="false"/>
+    <arg name="paused" default="false"/>
+
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="world_name" value="$(arg world)"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="verbose" value="$(arg verbose)"/>
+        <arg name="paused" value="$(arg paused)"/>
+    </include>
+
+    <include file="$(find MultiUAV)/launch/px4/multi_uav_spawn.launch" />
+
+	<!-- 启动控制节点-->
+	<node pkg="MultiUAV" type="multi_uav" name="multi_uav" output="screen" />
+
+	<!-- 键盘控制-->
+	<node pkg="MultiUAV" type="multi_uav_keyboard.py" name="keyboard_control_px4" output="screen" launch-prefix="gnome-terminal --tab -e" />
+</launch>

@@ -1,0 +1,11 @@
+<launch>
+
+	<!-- Multi demo-->
+	<!-- 启动控制节点-->
+	<node pkg="MultiUAV" type="multi_uav" name="multi_uav" output="screen" />
+
+	<!-- 键盘控制-->
+	<node pkg="MultiUAV" type="single_uav_keyboard.py" name="keyboard_control_px4" output="screen" launch-prefix="gnome-terminal --tab -e" />
+
+
+</launch>
